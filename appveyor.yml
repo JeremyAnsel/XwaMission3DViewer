@@ -1,0 +1,29 @@
+image: Visual Studio 2019
+version: 1.0.{build}
+configuration: Release
+
+init:
+- if "%APPVEYOR_REPO_NAME%" == "JeremyAnsel/XwaMission3DViewer" if "%APPVEYOR_REPO_BRANCH%"=="master" if not defined APPVEYOR_PULL_REQUEST_NUMBER set DEPLOY=True
+
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+
+nuget:
+  disable_publish_on_pr: true
+
+before_build:
+- nuget restore XwaMission3DViewer\XwaMission3DViewer.sln
+
+build:
+  project: XwaMission3DViewer\XwaMission3DViewer.sln
+  verbosity: minimal
+
+after_build:
+- XwaMission3DViewer\build-dist.cmd
+
+artifacts:
+- path: XwaMission3DViewer\dist
+  name: XwaMission3DViewer-$(APPVEYOR_BUILD_VERSION)
+  type: zip
