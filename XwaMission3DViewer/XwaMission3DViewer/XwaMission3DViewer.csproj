@@ -20,8 +20,8 @@
 
   <ItemGroup>
     <PackageReference Include="HelixToolkit.Wpf" Version="2.10.0" />
-    <PackageReference Include="JeremyAnsel.Xwa.Dat" Version="1.0.4" />
-    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="1.0.27" />
+    <PackageReference Include="JeremyAnsel.Xwa.Dat" Version="2.0.8" />
+    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="2.0.36" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
