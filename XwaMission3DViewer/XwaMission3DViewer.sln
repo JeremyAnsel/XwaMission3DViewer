@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29613.14
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XwaMission3DViewer", "XwaMission3DViewer\XwaMission3DViewer.csproj", "{3B80B374-C399-45B2-9277-B466135915EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XwaMission3DViewer", "XwaMission3DViewer\XwaMission3DViewer.csproj", "{727E9B14-A5EB-430F-BFB6-65972669AF41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeremyAnsel.Xwa.HooksConfig", "JeremyAnsel.Xwa.HooksConfig\JeremyAnsel.Xwa.HooksConfig.csproj", "{17E57CFA-4B92-4A2A-9041-30A6AE2C78D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeremyAnsel.Xwa.HooksConfig", "JeremyAnsel.Xwa.HooksConfig\JeremyAnsel.Xwa.HooksConfig.csproj", "{5DD0625B-479C-4A33-B99A-CAE5138ACF06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeremyAnsel.Xwa.WpfOpt", "JeremyAnsel.Xwa.WpfOpt\JeremyAnsel.Xwa.WpfOpt.csproj", "{0DE28F08-0BB2-4F37-943E-EBAA5EA8259B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeremyAnsel.Xwa.WpfOpt", "JeremyAnsel.Xwa.WpfOpt\JeremyAnsel.Xwa.WpfOpt.csproj", "{BFC67E41-292B-4FA7-AB39-1EEF8099DDE4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,23 +15,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3B80B374-C399-45B2-9277-B466135915EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B80B374-C399-45B2-9277-B466135915EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B80B374-C399-45B2-9277-B466135915EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B80B374-C399-45B2-9277-B466135915EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17E57CFA-4B92-4A2A-9041-30A6AE2C78D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17E57CFA-4B92-4A2A-9041-30A6AE2C78D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17E57CFA-4B92-4A2A-9041-30A6AE2C78D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17E57CFA-4B92-4A2A-9041-30A6AE2C78D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DE28F08-0BB2-4F37-943E-EBAA5EA8259B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DE28F08-0BB2-4F37-943E-EBAA5EA8259B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DE28F08-0BB2-4F37-943E-EBAA5EA8259B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DE28F08-0BB2-4F37-943E-EBAA5EA8259B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{727E9B14-A5EB-430F-BFB6-65972669AF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{727E9B14-A5EB-430F-BFB6-65972669AF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{727E9B14-A5EB-430F-BFB6-65972669AF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{727E9B14-A5EB-430F-BFB6-65972669AF41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD0625B-479C-4A33-B99A-CAE5138ACF06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD0625B-479C-4A33-B99A-CAE5138ACF06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD0625B-479C-4A33-B99A-CAE5138ACF06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD0625B-479C-4A33-B99A-CAE5138ACF06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC67E41-292B-4FA7-AB39-1EEF8099DDE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC67E41-292B-4FA7-AB39-1EEF8099DDE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC67E41-292B-4FA7-AB39-1EEF8099DDE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC67E41-292B-4FA7-AB39-1EEF8099DDE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AD2C489D-BC93-4AD5-83E0-CE5D8D0D765D}
+		SolutionGuid = {370BEC53-6A2A-4ADA-92C9-43400CA938BB}
 	EndGlobalSection
 EndGlobal

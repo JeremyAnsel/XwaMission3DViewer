@@ -112,12 +112,12 @@ namespace XwaMission3DViewer
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Reliability", "CA2000:Supprimer les objets avant la mise hors de portée", Justification = "Justified.")]
         private void SetWorkingDirectory()
         {
-            var dlg = new WPFFolderBrowser.WPFFolderBrowserDialog
+            var dlg = new FolderBrowserForWPF.Dialog
             {
                 Title = "Choose a working directory containing " + AppSettings.XwaExeFileName + " or a child directory"
             };
 
-            if (dlg.ShowDialog(this) == true)
+            if (dlg.ShowDialog() == true)
             {
                 string fileName = dlg.FileName;
 

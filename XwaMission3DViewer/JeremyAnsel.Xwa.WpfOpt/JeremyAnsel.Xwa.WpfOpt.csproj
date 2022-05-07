@@ -1,19 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <Version>1.0.0</Version>
+    <Company>Jérémy Ansel</Company>
     <Copyright>Copyright © 2020 Jérémy Ansel</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HelixToolkit.Wpf" Version="2.10.0" />
-    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="2.0.36" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="HelixToolkit.Wpf" Version="2.20.2" />
+    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="3.0.43" />
   </ItemGroup>
 
 </Project>
