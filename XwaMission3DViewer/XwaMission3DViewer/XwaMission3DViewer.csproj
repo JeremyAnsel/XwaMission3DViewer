@@ -16,7 +16,7 @@
     <PackageReference Include="FolderBrowserForWPF" Version="1.2.0" />
     <PackageReference Include="HelixToolkit.Wpf" Version="2.20.2" />
     <PackageReference Include="JeremyAnsel.Xwa.Dat" Version="3.0.9" />
-    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="3.0.43" />
+    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="3.0.44" />
   </ItemGroup>
 
   <ItemGroup>
