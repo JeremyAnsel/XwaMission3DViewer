@@ -10,18 +10,15 @@ namespace JeremyAnsel.Xwa.HooksConfig
 {
     public static class XwaHooksConfig
     {
+        private static readonly Encoding _encoding = Encoding.GetEncoding("iso-8859-1");
+
         private static readonly TypeConverter Int32Converter = TypeDescriptor.GetConverter(typeof(int));
 
         public static int ToInt32(string text)
         {
-            if (string.IsNullOrEmpty(text))
-            {
-                throw new ArgumentNullException(nameof(text));
-            }
-
             text = text.Trim();
 
-            bool isNegative = text.StartsWith("-", StringComparison.Ordinal);
+            bool isNegative = text.StartsWith("-");
             if (isNegative)
             {
                 text = text.Substring(1).TrimStart();
@@ -58,29 +55,26 @@ namespace JeremyAnsel.Xwa.HooksConfig
                 return values;
             }
 
-            using (var reader = new StreamReader(path))
+            using (var reader = new StreamReader(path, _encoding))
             {
                 string line;
                 bool readSection = string.IsNullOrEmpty(section);
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    line = RemoveWhitespaces(line);
+                    line = line.Trim();
 
                     if (line.Length == 0)
                     {
                         continue;
                     }
 
-                    if (line.StartsWith("#", StringComparison.Ordinal)
-                        || line.StartsWith(";", StringComparison.Ordinal)
-                        || line.StartsWith("//", StringComparison.Ordinal))
+                    if (line.StartsWith("#") || line.StartsWith(";") || line.StartsWith("//"))
                     {
                         continue;
                     }
 
-                    if (line.StartsWith("[", StringComparison.Ordinal)
-                        && line.EndsWith("]", StringComparison.Ordinal))
+                    if (line.StartsWith("[") && line.EndsWith("]"))
                     {
                         string name = line.Substring(1, line.Length - 2);
 
@@ -108,11 +102,6 @@ namespace JeremyAnsel.Xwa.HooksConfig
 
         public static string GetFileKeyValue(IList<string> lines, string key)
         {
-            if (lines == null)
-            {
-                throw new ArgumentNullException(nameof(lines));
-            }
-
             foreach (string line in lines)
             {
                 int pos = line.IndexOf('=');
@@ -122,7 +111,7 @@ namespace JeremyAnsel.Xwa.HooksConfig
                     continue;
                 }
 
-                string name = line.Substring(0, pos);
+                string name = line.Substring(0, pos).Trim();
 
                 if (name.Length == 0)
                 {
@@ -131,7 +120,7 @@ namespace JeremyAnsel.Xwa.HooksConfig
 
                 if (string.Equals(name, key, StringComparison.OrdinalIgnoreCase))
                 {
-                    string value = line.Substring(pos + 1);
+                    string value = line.Substring(pos + 1).Trim();
                     return value;
                 }
             }
@@ -153,22 +142,27 @@ namespace JeremyAnsel.Xwa.HooksConfig
 
         public static IList<string> Tokennize(string str)
         {
+            str = str.Trim();
+
             if (string.IsNullOrEmpty(str))
             {
-                throw new ArgumentNullException(nameof(str));
+                return new List<string>();
             }
 
             string[] tokens = str.Split(',', ';');
-            return tokens.ToList();
+            var values = new List<string>(tokens.Length);
+
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                string value = tokens[i].Trim();
+                values.Add(value);
+            }
+
+            return values;
         }
 
         public static IList<IList<string>> GetFileListValues(IList<string> lines)
         {
-            if (lines == null)
-            {
-                throw new ArgumentNullException(nameof(lines));
-            }
-
             var values = new List<IList<string>>();
 
             foreach (string line in lines)
@@ -181,16 +175,11 @@ namespace JeremyAnsel.Xwa.HooksConfig
 
         public static IList<int> GetFileListIntValues(IList<string> lines)
         {
-            if (lines == null)
-            {
-                throw new ArgumentNullException(nameof(lines));
-            }
-
             var values = new List<int>();
 
             foreach (string line in lines)
             {
-                int value = int.Parse(line, CultureInfo.InvariantCulture);
+                int value = int.Parse(line.Trim());
                 values.Add(value);
             }
 
@@ -199,39 +188,15 @@ namespace JeremyAnsel.Xwa.HooksConfig
 
         public static IList<ushort> GetFileListUnsignedShortValues(IList<string> lines)
         {
-            if (lines == null)
-            {
-                throw new ArgumentNullException(nameof(lines));
-            }
-
             var values = new List<ushort>();
 
             foreach (string line in lines)
             {
-                ushort value = ushort.Parse(line, CultureInfo.InvariantCulture);
+                ushort value = ushort.Parse(line.Trim());
                 values.Add(value);
             }
 
             return values;
-        }
-
-        private static string RemoveWhitespaces(string str)
-        {
-            var sb = new StringBuilder(str.Length);
-            int c;
-
-            using (var reader = new StringReader(str))
-            {
-                while ((c = reader.Read()) != -1)
-                {
-                    if (!char.IsWhiteSpace((char)c))
-                    {
-                        sb.Append((char)c);
-                    }
-                }
-            }
-
-            return sb.ToString();
         }
     }
 }
