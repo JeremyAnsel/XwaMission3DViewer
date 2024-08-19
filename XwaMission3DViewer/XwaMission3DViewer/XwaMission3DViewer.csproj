@@ -12,15 +12,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="5.0.103" />
+    <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="5.0.115" />
     <PackageReference Include="FolderBrowserForWPF" Version="1.2.0" />
     <PackageReference Include="HelixToolkit.Wpf" Version="2.20.2" />
-    <PackageReference Include="JeremyAnsel.Xwa.Dat" Version="3.0.15" />
-    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="3.0.45" />
+    <PackageReference Include="JeremyAnsel.Xwa.Dat" Version="3.0.25" />
+    <PackageReference Include="JeremyAnsel.Xwa.HooksConfig" Version="1.0.8" />
+    <PackageReference Include="JeremyAnsel.Xwa.Opt" Version="3.0.50" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JeremyAnsel.Xwa.HooksConfig\JeremyAnsel.Xwa.HooksConfig.csproj" />
     <ProjectReference Include="..\JeremyAnsel.Xwa.WpfOpt\JeremyAnsel.Xwa.WpfOpt.csproj" />
   </ItemGroup>
 
