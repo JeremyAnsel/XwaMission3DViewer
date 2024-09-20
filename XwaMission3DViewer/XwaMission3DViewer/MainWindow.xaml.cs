@@ -742,7 +742,7 @@ namespace XwaMission3DViewer
 
             foreach (string line in lines)
             {
-                DatFile dat = DatFile.FromFile(AppSettings.WorkingDirectory + line);
+                DatFile dat = DatFile.FromFile(AppSettings.WorkingDirectory + line, false);
 
                 foreach (DatImage image in dat.Images)
                 {
@@ -758,7 +758,7 @@ namespace XwaMission3DViewer
                         continue;
                     }
 
-                    this._backdropModels.Add(key, new BackdropModel(image));
+                    this._backdropModels.Add(key, new BackdropModel(dat.FileName, image));
                 }
             }
         }

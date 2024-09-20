@@ -12,26 +12,37 @@ namespace XwaMission3DViewer
 {
     public sealed class BackdropModel
     {
-        public BackdropModel()
-        {
-        }
+        private string _datFileName;
 
-        public BackdropModel(DatImage image)
+        private short _datGroupId;
+
+        private short _datImageId;
+
+        public BackdropModel(string datFileName, DatImage image)
         {
+            if (string.IsNullOrEmpty(datFileName))
+            {
+                throw new ArgumentNullException(nameof(datFileName));
+            }
+
             if (image == null)
             {
                 throw new ArgumentNullException(nameof(image));
             }
 
+            this._datFileName = datFileName;
+            this._datGroupId = image.GroupId;
+            this._datImageId = image.ImageId;
+
             this.Width = image.Width;
-            this.Image = image;
+            this.Height = image.Height;
         }
 
-        public int Width { get; set; }
+        public int Width { get; private set; }
 
-        public DatImage Image { get; set; }
+        public int Height { get; private set; }
 
-        public Material Material { get; set; }
+        public Material Material { get; private set; }
 
         public void CreateMaterial()
         {
@@ -40,18 +51,18 @@ namespace XwaMission3DViewer
                 return;
             }
 
-            byte[] data = this.Image.GetImageData();
+            DatImage image = DatFile.GetImageDataById(this._datFileName, this._datGroupId, this._datImageId);
+
+            byte[] data = image.GetImageData();
 
             if (data != null)
             {
-                var bitmap = BitmapSource.Create(this.Image.Width, this.Image.Height, 96, 96, PixelFormats.Bgra32, null, data, this.Image.Width * 4);
+                var bitmap = BitmapSource.Create(image.Width, image.Height, 96, 96, PixelFormats.Bgra32, null, data, image.Width * 4);
                 var material = new EmissiveMaterial(new ImageBrush(bitmap));
                 material.Freeze();
 
                 this.Material = material;
             }
-
-            this.Image = null;
         }
     }
 }
