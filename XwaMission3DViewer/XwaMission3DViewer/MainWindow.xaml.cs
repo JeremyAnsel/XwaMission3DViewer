@@ -533,16 +533,32 @@ namespace XwaMission3DViewer
                     continue;
                 }
 
-                if (planetId < 0 || planetId >= AppSettings.ExePlanets.Length)
+                bool isDefaultPlanet = planetId >= 1 && planetId < AppSettings.ExePlanets.Length;
+                bool isExtraPlanet = planetId >= 104 && planetId <= 255;
+
+                if (!isDefaultPlanet && !isExtraPlanet)
                 {
                     continue;
                 }
 
-                var planet = AppSettings.ExePlanets[planetId];
+                bool isDsFire = isDefaultPlanet && AppSettings.ExePlanets[planetId].ModelIndex == 487;
 
-                if (planet.ModelIndex == 0)
+                var planet = isDefaultPlanet
+                    ? AppSettings.ExePlanets[planetId]
+                    : new()
+                    {
+                        ModelIndex = 0,
+                        DataIndex1 = (short)(6304 + planetId - 104),
+                        DataIndex2 = 0,
+                        Flags = 5
+                    };
+
+                if (isDefaultPlanet)
                 {
-                    continue;
+                    if (planet.ModelIndex == 0)
+                    {
+                        continue;
+                    }
                 }
 
                 byte imageNumber;
@@ -551,7 +567,7 @@ namespace XwaMission3DViewer
                 {
                     imageNumber = 0;
                 }
-                else if (planet.ModelIndex == 487)
+                else if (isDsFire)
                 {
                     imageNumber = 0;
                 }
@@ -738,19 +754,12 @@ namespace XwaMission3DViewer
                 lines.Add(line);
             }
 
-            var planetGroupIds = AppSettings.ExePlanets.Select(t => t.DataIndex1).ToList();
-
             foreach (string line in lines)
             {
                 DatFile dat = DatFile.FromFile(AppSettings.WorkingDirectory + line, false);
 
                 foreach (DatImage image in dat.Images)
                 {
-                    if (!planetGroupIds.Contains(image.GroupId))
-                    {
-                        continue;
-                    }
-
                     string key = image.GroupId + ", " + image.ImageId;
 
                     if (this._backdropModels.ContainsKey(key))
