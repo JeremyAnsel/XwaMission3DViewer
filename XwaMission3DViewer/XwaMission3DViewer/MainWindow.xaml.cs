@@ -575,7 +575,7 @@ namespace XwaMission3DViewer
                 {
                     if ((planet.Flags & 1) != 0)
                     {
-                        imageNumber = flightGroup.GlobalCargoIndex;
+                        imageNumber = (byte)Math.Max((sbyte)flightGroup.GlobalCargoIndex, (sbyte)0);
                     }
                     else
                     {

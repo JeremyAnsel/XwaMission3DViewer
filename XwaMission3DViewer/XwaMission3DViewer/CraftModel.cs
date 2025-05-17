@@ -62,9 +62,33 @@ namespace XwaMission3DViewer
 
             if (this.CraftId == 183 && this.PlanetId != 0)
             {
-                var planet = AppSettings.ExePlanets?.ElementAtOrDefault(this.PlanetId);
+                bool isDefaultPlanet = this.PlanetId >= 1 && this.PlanetId < AppSettings.ExePlanets.Length;
+                bool isExtraPlanet = this.PlanetId >= 104 && this.PlanetId <= 255;
+                bool isDsFire = isDefaultPlanet && AppSettings.ExePlanets[this.PlanetId].ModelIndex == 487;
 
-                if (planet != null && planet.ModelIndex != 0)
+                PlanetEntry planet = null;
+
+                if (isDefaultPlanet)
+                {
+                    planet = AppSettings.ExePlanets[this.PlanetId];
+
+                    if (planet.ModelIndex == 0)
+                    {
+                        planet = null;
+                    }
+                }
+                else if (isExtraPlanet)
+                {
+                    planet = new()
+                    {
+                        ModelIndex = 0,
+                        DataIndex1 = (short)(6304 + this.PlanetId - 104),
+                        DataIndex2 = 0,
+                        Flags = 5
+                    };
+                }
+
+                if (planet != null)
                 {
                     if (planet.DataIndex2 != 0)
                     {
@@ -76,7 +100,7 @@ namespace XwaMission3DViewer
                     }
                     else
                     {
-                        this.CraftName = planet.DataIndex1 + ", " + flightGroup.GlobalCargoIndex;
+                        this.CraftName = planet.DataIndex1 + ", " + (sbyte)flightGroup.GlobalCargoIndex;
                     }
                 }
             }
